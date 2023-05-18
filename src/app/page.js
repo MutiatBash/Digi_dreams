@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -34,11 +35,8 @@ export default function Home() {
             </li>
           </ul>
           <div class="flex flex-row justify-between items-center gap-x-8">
-            <a href="#" class="text-base text-white">
-              Connect Wallet
-            </a>
-            <button class="rounded-lg bg-gradient-to-br from-[#C293FF] via-[#82C2FF] via-[#7DEFDA] to-[#FFD29D] py-3 text-white px-4">
-              Explore Now
+            <button class="rounded-lg bg-gradient-to-br from-[#C293FF] via-[#82C2FF] to-[#7DEFDA] py-3 text-white px-4">
+              <Link href="/signup">Explore Now →</Link>
             </button>
           </div>
         </nav>
@@ -47,8 +45,8 @@ export default function Home() {
       {/* HERO SECTION */}
       <div>
         <div class="main flex flex-row justify-between items-center px-10 py-10 mx-8 gap-x-8">
-          <div class="main-text w-3/5 flex flex-col justify-between gap-y-8">
-            <h1 class="text-7xl/[62px] font-extrabold w-3/4 text-transparent bg-clip-text bg-gradient-to-r from-[#FF1B6B] via-[#82C2FF] to-[#FFD29D]  ">
+          <div class="main-text w-3/5 flex flex-col justify-between gap-y-10">
+            <h1 class="text-7xl/[62px] font-extrabold w-3/4 text-transparent bg-clip-text bg-gradient-to-br from-[#FF1B6B] via-[#82C2FF] to-[#FFD29D]  ">
               Digi Dreams
             </h1>
             <p class="w-3/4 text-white">
@@ -56,7 +54,7 @@ export default function Home() {
               features
             </p>
             <button class="rounded-lg bg-gradient-to-br from-[#C293FF] via-[#82C2FF] via-[#7DEFDA] to-[#FFD29D] py-3 text-white px-4 self-start">
-              Explore Now
+              Explore Now →
             </button>
           </div>
           <div class="image w-2/5">
@@ -88,18 +86,30 @@ export default function Home() {
       </section>
       {/* VIDEO SECTION */}
       <section>
-        <div class="main flex flex-col justify-between items-center px-8 py-10 mx-8 gap-x-8">
+        <div class=" flex flex-col justify-between items-center  gap-x-8">
           <div class="image w-3/6 self-end">
-            <img src="../images/star.png" alt="" class="w-1/5" />
+            <img src="../images/star.png" alt="" class="w-1/5 self-end" />
           </div>
-          <div class="bg-indigo-500 w-3/5 "> hello</div>
+          <div class="bg-[#BAA5996E] w-3/5 ">
+            {" "}
+            <img src="../images/play.png" />
+          </div>
         </div>
       </section>
       {/* PHONE SECTION */}
       <section>
-        <div class="main flex flex-col justify-between items-center px-8 py-10 mx-8 gap-x-8">
-          <div class="image w-3/6">
-            <img src="../images/phone.png" alt="" class="w-4/5" />
+        <div class="main flex flex-col justify-between items-center px-8 py-10 gap-x-8">
+          <div class="image w-3/5">
+            <img src="../images/phone.png" alt="" class="w-3/5" />
+          </div>
+          <div class="bg-[#BAA5996E]"></div>
+        </div>
+      </section>
+      {/* PHONE SECTION */}
+      <section>
+        <div class="main flex flex-col justify-between items-center px-8 py-10 gap-x-8">
+          <div class="image w-2/6">
+            <img src="../images/phone.png" alt="" class="w-3/5" />
           </div>
           <div class="bg-[#BAA5996E]"></div>
         </div>
