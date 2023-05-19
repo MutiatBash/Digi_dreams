@@ -1,7 +1,41 @@
+"use client";
 import "./globals.css";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
+// import "@rainbow-me/rainbowkit/styles.css";
+// import { ConnectButton } from "@rainbow-me/rainbowkit";
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+  darkTheme,
+} from "@rainbow-me/rainbowkit";
+import { chain, configureChains, createConfig, WagmiConfig } from "wagmi";
+import { celoAlfajores, celo } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
-const inter = Inter({ subsets: ["latin"] });
+const { chains, publicClient } = configureChains(
+  [celoAlfajores, celo],
+  // [alchemyProvider({ apiKey : process.env.ALCHEMY_ID }), publicProvider()
+  [
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: "https://celo-alfajores.infura.io/v3/8630ca5e1d4d430caaa9f05be63e7952",
+      }),
+    }),
+  ]
+);
+const { connectors } = getDefaultWallets({
+  appName: "My RainbowKit App",
+  projectId: "YOUR_PROJECT_ID",
+  chains,
+});
+const wagmiConfig = createConfig({
+  autoConnect: true,
+  connectors,
+  publicClient,
+});
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Digi Dreams",
@@ -11,7 +45,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider chains={chains} theme={darkTheme()} coolMode>
+          <body>{children}</body>
+        </RainbowKitProvider>
+      </WagmiConfig>
     </html>
   );
 }
